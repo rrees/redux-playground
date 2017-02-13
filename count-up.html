@@ -11,12 +11,29 @@
     <p id="count-display"></p>
 
     <script>
-      function counter() {
+      function counter(state, action) {
+        if(state === undefined) {
+          return 0;
+        }
+
+        switch(action.type) {
+          default:
+            return state;
+        }
 
       }
 
       const el = document.getElementById('count-display');
       const store = Redux.createStore(counter);
+
+      function render() {
+        el.innerHTML = store.getState().toString();
+      }
+
+      render();
+
+      store.subscribe(render);
+
     </script>
   </body>
 </html>
