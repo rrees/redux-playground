@@ -17,6 +17,8 @@
         }
 
         switch(action.type) {
+          case 'INCREMENT':
+            return state + 1;
           default:
             return state;
         }
@@ -33,6 +35,13 @@
       render();
 
       store.subscribe(render);
+
+      function increment() {
+        store.dispatch({type: 'INCREMENT'});
+        setTimeout(increment, 2000);
+      }
+
+      setTimeout(increment, 2000);
 
     </script>
   </body>
